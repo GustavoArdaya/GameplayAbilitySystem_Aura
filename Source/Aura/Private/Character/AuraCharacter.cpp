@@ -1,8 +1,8 @@
 // Copyright Gustavo Ardaya
 
+#include "Character/AuraCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-#include "Character/AuraCharacter.h"
 
 AAuraCharacter::AAuraCharacter()
 {
