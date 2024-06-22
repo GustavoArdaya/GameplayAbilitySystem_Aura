@@ -8,6 +8,6 @@ void AAuraHUD::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UUserWidget * Widget = CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetClass);
+	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetClass);
 	Widget->AddToViewport();
 }

@@ -7,6 +7,8 @@
 #include "AuraHUD.generated.h"
 
 class UAuraUserWidget;
+class UOverlayWidgetController;
+struct FWidgetControllerParams;
 
 /**
  * 
@@ -20,6 +22,8 @@ public:
 
 	UPROPERTY()
 	TObjectPtr<UAuraUserWidget> OverlayWidget;
+
+	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
 	
 protected:
 
