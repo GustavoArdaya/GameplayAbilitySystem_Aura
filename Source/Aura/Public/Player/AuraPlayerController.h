@@ -12,6 +12,7 @@ class UInputAction;
 class UAuraInputConfig;
 class IEnemyInterface;
 struct FInputActionValue;
+class UAuraAbilitySystemComponent;
 /**
  * 
  */
@@ -24,6 +25,8 @@ public:
 
 	AAuraPlayerController();
 	virtual void PlayerTick(float DeltaTime) override;
+
+	UAuraAbilitySystemComponent* GetASC();
 
 protected:
 
@@ -51,4 +54,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UAuraInputConfig> InputConfig;
+
+	UPROPERTY()
+	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 };
