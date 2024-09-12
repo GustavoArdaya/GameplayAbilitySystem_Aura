@@ -2,7 +2,7 @@
 
 bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, UPackageMap* Map, bool& bOutSuccess) 
 {
-	uint32 RegBits = 0;
+	uint32 RepBits = 0;
 	if (Ar.IsSaving())
 	{
 		if (bReplicateInstigator && Instigator.IsValid())
@@ -33,7 +33,7 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, UPackageMap* Map, bo
 		{
 			RepBits |= 1 << 6;
 		}
-		if (bIsBlockHit)
+		if (bIsBlockedHit)
 		{
 			RepBits |= 1 << 7;
 		}
@@ -87,7 +87,7 @@ bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, UPackageMap* Map, bo
 	}
 	if (RepBits & (1 << 7))
 	{
-		Ar << bIsBlockHit;
+		Ar << bIsBlockedHit;
 	}
 	if (RepBits & (1 << 8))
 	{
