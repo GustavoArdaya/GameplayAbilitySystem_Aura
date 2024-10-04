@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
 #include "Interaction/CombatInterface.h"
+#include "GameplaytagContainer.h"
 #include "AuraCharacterBase.generated.h"
 
 class UAbilitySystemComponent;
@@ -31,7 +32,7 @@ public:
 	// Combat Interface
 	virtual UAnimMontage* GetHitReactMontage_Implementation() override;
 	virtual void Die() override;
-	virtual FVector GetCombatSocketLocation_Implementation() override;
+	virtual FVector GetCombatSocketLocation_Implementation(const FGameplayTag& MontageTag) override; 
 	virtual bool IsDead_Implementation() const override;
 	virtual AActor* GetAvatar_Implementation() override;
 	virtual TArray<FTaggedMontage> GetAttackMontages_Implementation() override;
@@ -44,6 +45,12 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = Combat)
 	FName WeaponTipSocketName;
+
+	UPROPERTY(EditAnywhere, Category = Combat)
+	FName LeftHandSocketName;
+
+	UPROPERTY(EditAnywhere, Category = Combat)
+	FName RightHandSocketName;
 
 	bool bDead = false;
 
