@@ -29,7 +29,7 @@ AAuraProjectile::AAuraProjectile()
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
 	ProjectileMovement->InitialSpeed = 550.f;
 	ProjectileMovement->MaxSpeed = 550.f;
-	ProjectileMovement->ProjectileGravityScale = 0.f;
+	ProjectileMovement->ProjectileGravityScale = 1.f;
 }
 
 void AAuraProjectile::BeginPlay()
