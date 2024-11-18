@@ -4,6 +4,7 @@
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Player/AuraPlayerState.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AuraGameplayTags.h"
 
 
@@ -27,6 +28,12 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 			AttributePointsChangedDelegate.Broadcast(Points);
 		}
 	);
+}
+
+void UAttributeMenuWidgetController::UpgradeAttribute(const FGameplayTag& AttributeTag)
+{
+	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+	AuraASC->UpgradeAttribute(AttributeTag);
 }
 
 

@@ -8,6 +8,7 @@
 #include "AttributeMenuWidgetController.generated.h"
 
 struct FGameplayAttribute;
+struct FGameplayTag;
 
 //struct FAuraAttributeInfo;
 
@@ -31,6 +32,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnPlayerStatChangedSignature AttributePointsChangedDelegate;
+
+	UFUNCTION(BlueprintCallable)
+	void UpgradeAttribute(const FGameplayTag& AttributeTag);
 
 protected:
 
