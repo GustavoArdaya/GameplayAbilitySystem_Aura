@@ -177,6 +177,11 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 
 	// Abilities
 
+	GameplayTags.Abilities_None = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.None"),
+		FString("No Ability (null) Tag")
+	);
+
 	GameplayTags.Abilities_Attack = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Abilities.Attack"),
 		FString("Attack Ability Tag")
@@ -199,7 +204,7 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FString("Locked Status Tag")
 	);
 
-	GameplayTags.Abilities_Status_Elegible = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	GameplayTags.Abilities_Status_Eligible = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Abilities.Status.Elegible"),
 		FString("Elegible Status Tag")
 	);
