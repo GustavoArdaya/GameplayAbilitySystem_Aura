@@ -30,12 +30,7 @@ public:
 	FGameplayTag Attributes_Secondary_CriticalHitDamage;
 	FGameplayTag Attributes_Secondary_CriticalHitResistance;
 	FGameplayTag Attributes_Secondary_HealthRegeneration;
-	FGameplayTag Attributes_Secondary_ManaRegeneration;
-
-	FGameplayTag Attributes_Resistance_Fire;
-	FGameplayTag Attributes_Resistance_Lightning;
-	FGameplayTag Attributes_Resistance_Arcane;
-	FGameplayTag Attributes_Resistance_Physical;
+	FGameplayTag Attributes_Secondary_ManaRegeneration;	
 
 	FGameplayTag Attributes_Meta_IncomingXP;
 
@@ -53,6 +48,16 @@ public:
 	FGameplayTag Damage_Lightning;
 	FGameplayTag Damage_Arcane;
 	FGameplayTag Damage_Physical;
+
+	FGameplayTag Attributes_Resistance_Fire;
+	FGameplayTag Attributes_Resistance_Lightning;
+	FGameplayTag Attributes_Resistance_Arcane;
+	FGameplayTag Attributes_Resistance_Physical;
+
+	FGameplayTag Debuff_Burn;
+	FGameplayTag Debuff_Stun;
+	FGameplayTag Debuff_Arcane;
+	FGameplayTag Debuff_Physical;
 
 	FGameplayTag Abilities_None;
 
@@ -90,6 +95,8 @@ public:
 
 
 	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
+
+	TMap<FGameplayTag, FGameplayTag> DamageTypesToDebuffs;
 
 	FGameplayTag Effects_HitReact;
 
