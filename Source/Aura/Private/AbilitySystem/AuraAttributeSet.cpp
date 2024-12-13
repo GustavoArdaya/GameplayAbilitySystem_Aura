@@ -14,6 +14,7 @@
 #include "AuraLogChannels.h"
 #include <Interaction/PlayerInterface.h>
 #include "AuraAbilityTypes.h"
+#include "GameplayEffectComponents/TargetTagsGameplayEffectComponent.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
@@ -170,6 +171,7 @@ void UAuraAttributeSet::HandleIncomingDamage(const FEffectProperties& Props)
 		const bool bFatal = NewHealth <= 0.f;
 		if (bFatal)
 		{
+			// Use Death Impulse  
 			ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor);
 			if (CombatInterface)
 			{
@@ -213,7 +215,11 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 	Effect->Period = DebuffFrequency;
 	Effect->DurationMagnitude = FScalableFloat(DebuffDuration);
 
-	Effect->InheritableOwnedTagsContainer.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
+	//Effect->InheritableOwnedTagsContainer.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
+	FInheritedTagContainer TagContainer = FInheritedTagContainer();
+	UTargetTagsGameplayEffectComponent& Component = Effect->FindOrAddComponent<UTargetTagsGameplayEffectComponent>();
+	TagContainer.Added.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
+	Component.SetAndApplyTargetTagChanges(TagContainer);
 
 	Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;
 	Effect->StackLimitCount = 1;
