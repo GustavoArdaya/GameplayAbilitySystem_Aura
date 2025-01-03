@@ -61,6 +61,18 @@ struct FDamageEffectParams
 
 	UPROPERTY(BlueprintReadWrite)
 	FVector KnockbackForce = FVector::ZeroVector;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsRadialDamage = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	float RadialDamageInnerRadius = 0.f;
+
+	UPROPERTY(BlueprintReadWrite)
+	float RadialDamageOuterRadius = 0.f;
+
+	UPROPERTY(BlueprintReadWrite)
+	FVector RadialDamageOrigin = FVector::ZeroVector;
 };
 
 USTRUCT(BlueprintType)
@@ -79,6 +91,10 @@ public:
 	TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }
 	FVector GetDeathImpulse() const { return DeathImpulse; }
 	FVector GetKnockbackForce() const { return KnockbackForce; }
+	bool GetIsRadialDamage() const { return bIsRadialDamage; }
+	float GetRadialDamageInnerRadius() const { return RadialDamageInnerRadius; }
+	float GetRadialDamageOuterRadius() const { return RadialDamageOuterRadius; }
+	FVector GetRadialDamageOrigin() const { return RadialDamageOrigin; }
 
 	void SetIsCriticalHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
 	void SetIsBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
@@ -89,6 +105,10 @@ public:
 	void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
 	void SetDeathImpulse(const FVector& InDeathImpulse) { DeathImpulse = InDeathImpulse; }
 	void SetKnockbackForce(const FVector& InKnockbackForce) { KnockbackForce = InKnockbackForce; }
+	void SetIsRadialDamage(const bool bInIsRadialDamage) { bIsRadialDamage = bInIsRadialDamage; }
+	void SetRadialDamageInnerRadius(float InRadialDamageInnerRadius) { RadialDamageInnerRadius = InRadialDamageInnerRadius; }
+	void SetRadialDamageOuterRadius(float InRadialDamageOuterRadius) { RadialDamageOuterRadius = InRadialDamageOuterRadius; }
+	void SetRadialDamageOrigin(const FVector& InRadialDamageOrigin) { RadialDamageOrigin = InRadialDamageOrigin; }
 
 	/** Returns the actual struct used for serialization, subclasses must override this! */
 	virtual UScriptStruct* GetScriptStruct() const
@@ -138,6 +158,18 @@ protected:
 
 	UPROPERTY()
 	FVector KnockbackForce = FVector::ZeroVector;
+
+	UPROPERTY()
+	bool bIsRadialDamage = false;
+
+	UPROPERTY()
+	float RadialDamageInnerRadius = 0.f;
+
+	UPROPERTY()
+	float RadialDamageOuterRadius = 0.f;
+
+	UPROPERTY()
+	FVector RadialDamageOrigin = FVector::ZeroVector;
 
 };
 
