@@ -18,6 +18,7 @@ class UAnimMontage;
 class UNiagaraSystem;
 class UDebuffNiagaraComponent;
 class UPassiveNiagaraComponent;
+
  
 UCLASS(Abstract)
 class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInterface, public ICombatInterface
@@ -28,8 +29,8 @@ public:
 	AAuraCharacterBase();
 	virtual void Tick(float DeltaTime) override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const; 
-
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override; 
 	FORCEINLINE UAttributeSet* GetAttributeSet() const { return AttributeSet; }	
 
 	UFUNCTION(NetMulticast, Reliable)
@@ -49,12 +50,14 @@ public:
 	virtual ECharacterClass GetCharacterClass_Implementation() override;
 	virtual FOnASCRegistered& GetOnASCRegisteredDelegate() override;
 	virtual FOnDeath& GetOnDeathDelegate() override;
+	virtual FOnDamageSignature& GetOnDamageSignature() override;
 	virtual USkeletalMeshComponent* GetWeapon_Implementation() override; 
 	virtual void SetIsBeingShocked_Implementation(bool bInShock) override;
 	virtual bool IsBeingShocked_Implementation() const override;
 
 	FOnASCRegistered OnASCRegistered;
 	FOnDeath OnDeath;
+	FOnDamageSignature OnDamageDelegate;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TArray<FTaggedMontage> AttackMontages;
