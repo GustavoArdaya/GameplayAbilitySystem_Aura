@@ -16,6 +16,7 @@
 #include <NiagaraFunctionLibrary.h>
 #include "Actor/MagicCircle.h"
 #include "Components/DecalComponent.h"
+#include "../Aura.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -108,8 +109,8 @@ void AAuraPlayerController::CursorTrace()
 		CurrentActor = nullptr;
 		return;
 	}
-
-	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	const ECollisionChannel TraceChannel = IsValid(MagicCircle) ? ECC_ExcludePlayers : ECC_Visibility;
+	GetHitResultUnderCursor(TraceChannel, false, CursorHit);
 	if (!CursorHit.bBlockingHit) return;
 	
 	LastActor = CurrentActor;
