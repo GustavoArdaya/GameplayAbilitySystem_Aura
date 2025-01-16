@@ -42,3 +42,9 @@ void AAuraGameModeBase::DeleteSlot(const FString& SlotName, int32 SlotIndex)
 		UGameplayStatics::DeleteGameInSlot(SlotName, SlotIndex);
 	}
 }
+
+void AAuraGameModeBase::BeginPlay()
+{
+	Super::BeginPlay();
+	Maps.Add(DefaultMapName, DefaultMap);
+}
