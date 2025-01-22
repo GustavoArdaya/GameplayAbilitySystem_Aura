@@ -17,6 +17,7 @@
 #include "Actor/MagicCircle.h"
 #include "Components/DecalComponent.h"
 #include "../Aura.h"
+#include <Interaction/HighlightInterface.h>
 
 AAuraPlayerController::AAuraPlayerController()
 {
@@ -114,7 +115,7 @@ void AAuraPlayerController::CursorTrace()
 	if (!CursorHit.bBlockingHit) return;
 	
 	LastActor = CurrentActor;
-	CurrentActor = CursorHit.GetActor();
+	CurrentActor = Cast<IHighlightInterface>(CursorHit.GetActor());
 
 	if (LastActor != CurrentActor)
 	{
