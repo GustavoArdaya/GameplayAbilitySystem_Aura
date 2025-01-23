@@ -6,7 +6,7 @@
 #include "UObject/Interface.h"
 #include "HighlightInterface.generated.h"
 
-UINTERFACE(MinimalAPI)
+UINTERFACE(MinimalAPI, BlueprintType)
 class UHighlightInterface : public UInterface
 {
 	GENERATED_BODY()
